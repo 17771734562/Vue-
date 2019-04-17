@@ -6,10 +6,9 @@
         </transition>
 
         <!--头部-->
-        <mt-header fixed title="首页">
-            <router-link to="/" slot="left">
-                <mt-button icon="back">返回</mt-button>
-            </router-link>
+        <mt-header  fixed title="首页">
+             <mt-button icon="back" slot="left" @click="goBack" v-show="flag">返回</mt-button>
+
         </mt-header>
         <!--底部-->
         <nav class="mui-bar mui-bar-tab">
@@ -36,7 +35,32 @@
 
 <script>
     export default {
-        name: "app"
+        name: "app",
+        data(){
+            return{
+                flag:false
+            }
+        },
+        methods:{
+            //点击后退一步
+            goBack(){
+                this.$router.go(-1)
+            }
+        },
+        //在页面初始化时判断路由地址
+        created(){
+            this.flag = this.$route.path === '/home' ? false : true;
+        },
+        //监听路由地址, 当时首页的时候, 隐藏返回按钮
+        watch:{
+            '$route.path':function (newVal) {
+                if(newVal === '/home'){
+                    this.flag = false;
+                }else{
+                    this.flag = true
+                }
+            }
+        }
     }
 </script>
 

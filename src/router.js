@@ -13,11 +13,15 @@ import NewsList from './components/news/newsList.vue'
 import NewsInfo from './components/news/newsInfo.vue'
 import PhotosList from './components/photos/photosList.vue'
 import PhotoInfo from './components/photos/photoInfo.vue'
-
+import GoodsList from './components/goods/goodsList.vue'
+import GoodsInfo from './components/goods/goodsInfo.vue'
+import GoodsPresent from './components/goods/goodsPresent.vue'
+import GoodsComment from './components/goods/goodsComment.vue'
 //3.创建路由对象
 let router = new VueRouter({
     //设置路由切换高亮显示
     linkActiveClass:'mui-active',
+    //匹配规则
     routes:[
         {path:'/',redirect:'/home'},
         {path:'/home',component:Home},
@@ -27,7 +31,11 @@ let router = new VueRouter({
         {path:'/home/newsList',component:NewsList},
         {path:'/home/newsInfo/:id',component:NewsInfo},
         {path:'/home/photosList/',component:PhotosList},
-        {path:'/home/photoInfo/:id/',component:PhotoInfo},
+        {path:'/home/photoInfo/:id',component:PhotoInfo},
+        {path:'/home/goodsList',component:GoodsList},
+        {path:'/home/goodsInfo/:id',component:GoodsInfo,name:'goodsInfo'},
+        {path:'/home/goodsPresent/:id',component:GoodsPresent},
+        {path:'/home/goodsComment/:id',component:GoodsComment},
     ]
 })
 

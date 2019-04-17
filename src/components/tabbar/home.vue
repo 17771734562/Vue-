@@ -1,12 +1,14 @@
 <template>
     <div>
-        <!--轮播图-->
-        <mt-swipe :auto="4000">
-            <mt-swipe-item v-for="item in bannerList" :key="item.id">
-                <img :src="item.img" alt="">
-            </mt-swipe-item>
-        </mt-swipe>
+        <!--&lt;!&ndash;轮播图&ndash;&gt;-->
+        <!--<mt-swipe :auto="4000">-->
+            <!--<mt-swipe-item v-for="item in bannerList" :key="item.id">-->
+                <!--<img :src="item.img" alt="">-->
+            <!--</mt-swipe-item>-->
+        <!--</mt-swipe>-->
+        <swiper :bannerList="bannerList" :bol="true">
 
+        </swiper>
         <!--6宫格-->
         <ul class="mui-table-view mui-grid-view mui-grid-9">
             <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
@@ -22,10 +24,10 @@
                 ></router-link>
             </li>
             <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-                <a>
+                <router-link to="/home/goodsList">
                 <img src="../../images/menu3.png" alt="">
                 <div class="mui-media-body">商品购买</div>
-                </a>
+                </router-link>
             </li>
             <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
                 <img src="../../images/menu4.png" alt="">
@@ -42,8 +44,13 @@
 </template>
 
 <script>
+    import swiper from '../subcomponents/swiper.vue'
+
     export default {
         name: "home",
+        components:{
+          swiper
+        },
         data(){
             return{
                 bannerList:[]
@@ -67,15 +74,15 @@
 </script>
 
 <style scoped lang="less">
-    .mint-swipe{
-        height: 200px;
-        .mint-swipe-item{
-            img{
-                width: 100%;
-                height: 100%;
-            }
-        }
-    }
+    /*.mint-swipe{*/
+        /*height: 200px;*/
+        /*.mint-swipe-item{*/
+            /*img{*/
+                /*width: 100%;*/
+                /*height: 100%;*/
+            /*}*/
+        /*}*/
+    /*}*/
     .mui-grid-view.mui-grid-9{
         background-color: #fff;
         img{
